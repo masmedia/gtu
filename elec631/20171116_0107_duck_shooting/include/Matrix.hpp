@@ -47,11 +47,10 @@ namespace Matrix_NS{
 //            Matrix& operator/(const Matrix& other);
 
             /** Helper method for creation of matrix */
-            void createMatrix(const int, const int, double);
+            const void createMatrix(const int, const int, double);
 
             /** Print matrix for debugging*/
-            void printMatrix();
-            void printBigMatrix();
+            const void printMatrix() const;
     };
     Matrix& operator+(double, const Matrix& other);  // Works with constant + mat1
     Matrix& operator*(double, const Matrix& other);  // Works with constant * mat1 (aka Left Multiplication)

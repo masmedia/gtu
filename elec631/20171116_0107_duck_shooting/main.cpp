@@ -1,12 +1,12 @@
 #include <random>
 #include <ctime>
 #include <map>
+#include <omp.h>
 #include "Linear_Spacing.hpp"
-#include "Poisson.hpp"
 #include "Matrix.hpp"
-//#include <omp.h>
+//#include "Poisson.hpp"
 
-using namespace Poisson_NS;
+//using namespace Poisson_NS;
 using namespace Linear_Spacing_NS;
 using namespace Matrix_NS;
 
@@ -22,7 +22,7 @@ int main(){
     Linear_Spacing p(0.05, 0.95, spacing);  //p.printVector();
     Matrix res(spacing, spacing, 0);
 
-//    #pragma omp parallel for num_threads(8)
+    #pragma omp parallel for num_threads(4)
     for(int kk = 0; kk < spacing; kk++){
     //for(int kk = 0; kk < 4; kk++){
         for (int ll = 0; ll < spacing; ll++ ){
@@ -71,16 +71,19 @@ int main(){
                 //tmp.printMatrix();
                 //std::cout << "p(ll):" << p(ll) << "\n";
                 double hitDuck = 0;
-                for (int in = 0; in < tmp.numel(); in++){
-                    if( tmp(in) == -99 ){
-                        tmp(in, 0);
-                    }
-                    else if ( tmp(in) >= 0 && tmp(in) < p(ll) ){
-                        tmp(in, 1);     // TODO: Burada duplicationlar oluyor onlarý cikart
-                        hitDuck++;
-                    }
-                    else {
-                        tmp(in, 0);
+                for (int in = 0; in < tmp.R_(); in++){
+                    for (int ij = 0; ij< tmp.C_(); ij++){
+                        if( tmp.M_().at(in).at(ij) == -99 ){
+                            tmp.M_(in, ij, 0);
+                        }
+                        else if ( tmp.M_().at(in).at(ij) >= 0 && tmp.M_().at(in).at(ij) < p(ll) ){
+                            tmp.M_(in, ij, 1);
+                            hitDuck++;
+                            break;
+                        }
+                        else {
+                            tmp.M_(in, ij, 0);
+                        }
                     }
                 }
 
@@ -100,7 +103,7 @@ int main(){
             //std::cout << "Res("<<kk<<","<<ll<<")= "<<res.M_().at(kk).at(ll) << "\n";
         }// ll
     }// kk
-    res.printBigMatrix();
+    res.printMatrix();
 
-  return 0;
+    return 0;
 }

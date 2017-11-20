@@ -45,10 +45,10 @@ Matrix_NS::Matrix& Matrix_NS::Matrix::operator=( Matrix& rhs){
 }
 
 //Getters and setters
-const int Matrix_NS::Matrix::R_()const {      return row_;                }
-const int Matrix_NS::Matrix::C_()const {      return column_;             }
-const int Matrix_NS::Matrix::numel() const{   return row_*column_;        }
-const std::vector< std::vector<double> >& Matrix_NS::Matrix::M_()const{    return matrix_; }
+const int Matrix_NS::Matrix::R_() const {      return row_;                }
+const int Matrix_NS::Matrix::C_() const {      return column_;             }
+const int Matrix_NS::Matrix::numel() const {   return row_*column_;        }
+const std::vector< std::vector<double> >& Matrix_NS::Matrix::M_() const {    return matrix_; }
 Matrix_NS::Matrix& Matrix_NS::Matrix::M_(int row, int col, double val){
     matrix_.at(row).at(col) = val;
     return *this;
@@ -86,8 +86,8 @@ Matrix_NS::Matrix& Matrix_NS::Matrix::operator*(double scalar){
 }
 //Matrix_NS::Matrix& Matrix_NS::Matrix::operator/(const Matrix& rhs){}
 
-//Create matrix with desired values  (TRUE)
-void Matrix_NS::Matrix::createMatrix(const int r, const int c, double val){
+//Create matrix with desired values
+const void Matrix_NS::Matrix::createMatrix(const int r, const int c, double val){
     this->matrix_.resize(r);
     for(int i=0; i<r; i++){
         this->matrix_.at(i).resize(c);
@@ -97,30 +97,18 @@ void Matrix_NS::Matrix::createMatrix(const int r, const int c, double val){
     }
 }
 //Print matrix for debugging issues
-void Matrix_NS::Matrix::printMatrix(){
+const void Matrix_NS::Matrix::printMatrix() const{
     std::cout << "Printing matrix...\n";
     for(int i=0; i<row_; i++){
         for(int j=0; j<column_; j++){
             //std::cout  << matrix_.at(i).at(j) << " ";
             //std::cout <<std::fixed<< matrix_.at(i).at(j) << " ";
-            std::cout <<std::setw(10) << matrix_.at(i).at(j) << " ";
+            std::cout << std::fixed << std::setw(5) << std::setprecision(3) << matrix_.at(i).at(j) << " ";
         }
         std::cout<< "\n";
     }
     std::cout << "End of matrix\n\n";
 }
-// Print bigger matrices for debugging issues
-void Matrix_NS::Matrix::printBigMatrix(){
-    std::cout << "Printing matrix...\n";
-    for(int i=0; i<row_; i++){
-        for(int j=0; j<column_; j++){
-            std::cout <<std::setw(5) << matrix_.at(i).at(j) << " ";
-        }
-        std::cout<< "\n";
-    }
-    std::cout << "End of matrix\n\n";
-}
-
 //Nonmember + operator overloading for adding a scalar  from left hand side to matrix
 Matrix_NS::Matrix& Matrix_NS::operator+(double scalar, const Matrix& rhs){
 //    std::cout << "\nInside nonmember + overloading...\n";
@@ -164,6 +152,5 @@ Matrix_NS::Matrix& Matrix_NS::operator*(const Matrix& rhs, double scalar){
     }
 //    temp.printMatrix();
 //    std::cout << "Returned from nonmember* right overload......\n\n";
-
     return temp;
 }
