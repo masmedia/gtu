@@ -4,6 +4,7 @@
 #include "Linear_Spacing.hpp"
 #include "Poisson.hpp"
 #include "Matrix.hpp"
+//#include <omp.h>
 
 using namespace Poisson_NS;
 using namespace Linear_Spacing_NS;
@@ -21,6 +22,7 @@ int main(){
     Linear_Spacing p(0.05, 0.95, spacing);  //p.printVector();
     Matrix res(spacing, spacing, 0);
 
+//    #pragma omp parallel for num_threads(8)
     for(int kk = 0; kk < spacing; kk++){
     //for(int kk = 0; kk < 4; kk++){
         for (int ll = 0; ll < spacing; ll++ ){
@@ -74,7 +76,7 @@ int main(){
                         tmp(in, 0);
                     }
                     else if ( tmp(in) >= 0 && tmp(in) < p(ll) ){
-                        tmp(in, 1);     // TODO: Burada duplicationlar oluyor onlarý cikart
+                        tmp(in, 1);     // TODO: Burada duplicationlar oluyor onlarÃ½ cikart
                         hitDuck++;
                     }
                     else {

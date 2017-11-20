@@ -1,5 +1,5 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#ifndef MATRIX_H_20171115_2235
+#define MATRIX_H_20171115_2235
 #include <iostream>
 #include <vector>
 namespace Matrix_NS{
@@ -28,10 +28,10 @@ namespace Matrix_NS{
              */
             Matrix& operator=(Matrix& other);
 
-            int R_() const;
-            int C_() const;
+            const int R_() const;
+            const int C_() const;
             /** Number of elements stored in matrix. Gives row*column size */
-            int numel() const;
+            const int numel() const;
             const std::vector< std::vector<double> >& M_() const;
             Matrix& M_(int, int, double);
 
@@ -57,4 +57,4 @@ namespace Matrix_NS{
     Matrix& operator*(double, const Matrix& other);  // Works with constant * mat1 (aka Left Multiplication)
     Matrix& operator*(const Matrix& other, double);  // Works with mat1 * constant (aka Right Multiplication)
 }
-#endif // MATRIX_H
+#endif // MATRIX_H_20171115_2235

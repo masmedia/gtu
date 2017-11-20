@@ -45,9 +45,9 @@ Matrix_NS::Matrix& Matrix_NS::Matrix::operator=( Matrix& rhs){
 }
 
 //Getters and setters
-int Matrix_NS::Matrix::R_()const {      return row_;                }
-int Matrix_NS::Matrix::C_()const {      return column_;             }
-int Matrix_NS::Matrix::numel() const{   return row_*column_;        }
+const int Matrix_NS::Matrix::R_()const {      return row_;                }
+const int Matrix_NS::Matrix::C_()const {      return column_;             }
+const int Matrix_NS::Matrix::numel() const{   return row_*column_;        }
 const std::vector< std::vector<double> >& Matrix_NS::Matrix::M_()const{    return matrix_; }
 Matrix_NS::Matrix& Matrix_NS::Matrix::M_(int row, int col, double val){
     matrix_.at(row).at(col) = val;
@@ -123,7 +123,7 @@ void Matrix_NS::Matrix::printBigMatrix(){
 
 //Nonmember + operator overloading for adding a scalar  from left hand side to matrix
 Matrix_NS::Matrix& Matrix_NS::operator+(double scalar, const Matrix& rhs){
-    //std::cout << "\nInside nonmember + overloading...\n";
+//    std::cout << "\nInside nonmember + overloading...\n";
     Matrix temp(rhs);
 //    temp.printMatrix();
     for(int i=0; i<temp.R_(); i++){
@@ -137,7 +137,7 @@ Matrix_NS::Matrix& Matrix_NS::operator+(double scalar, const Matrix& rhs){
 }
 // Nonmember * operator overloading for left multiplication
 Matrix_NS::Matrix& Matrix_NS::operator*(double scalar, const Matrix& rhs){
-    std::cout << "Inside nonmember left * overloading...\n";
+//    std::cout << "Inside nonmember left * overloading...\n";
     Matrix temp(rhs);
 //    temp.printMatrix();
     for(int i=0; i<temp.R_(); i++){
@@ -152,7 +152,7 @@ Matrix_NS::Matrix& Matrix_NS::operator*(double scalar, const Matrix& rhs){
 
 // Nonmember * operator overloading for right multiplication
 Matrix_NS::Matrix& Matrix_NS::operator*(const Matrix& rhs, double scalar){
-    std::cout << "Inside nonmember right * overloading...\n";
+//    std::cout << "Inside nonmember right * overloading...\n";
     Matrix temp(rhs);
 //    temp.printMatrix();
     for(int i=0; i<rhs.R_(); i++){

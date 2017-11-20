@@ -43,9 +43,9 @@ Linear_Spacing_NS::Linear_Spacing& Linear_Spacing_NS::Linear_Spacing::operator=(
 
 //Member functions
 //Getters and setters
-double Linear_Spacing_NS::Linear_Spacing::HVal_(){  return hVal_;   }
-double Linear_Spacing_NS::Linear_Spacing::LVal_(){  return lVal_;   }
-std::vector<double>& Linear_Spacing_NS::Linear_Spacing::LinSpa_(){  return lin_spacing_;  }
+const double Linear_Spacing_NS::Linear_Spacing::HVal_()const{  return hVal_;   }
+const double Linear_Spacing_NS::Linear_Spacing::LVal_()const{  return lVal_;   }
+const std::vector<double>& Linear_Spacing_NS::Linear_Spacing::LinSpa_()const{  return lin_spacing_;  }
 
 //Operator overloading for reaching certain indexed element
 double Linear_Spacing_NS::Linear_Spacing::operator()(const int i){

@@ -29,9 +29,9 @@ namespace Linear_Spacing_NS{
             Linear_Spacing& operator=(const Linear_Spacing& other);
 
             /** Getters and setters*/
-            double HVal_();
-            double LVal_();
-            std::vector<double>& LinSpa_();
+            const double HVal_() const;
+            const double LVal_() const;
+            const std::vector<double>& LinSpa_() const;
 
             /** Operator overload for () to reach certain element in the vector*/
             double operator()(const int);
