@@ -23,9 +23,7 @@ int main(){
     Matrix res(spacing, spacing, 0);
 
     int numProcessor = omp_get_num_procs();
-    #pragma omp parallel for num_threads(numProcessor) //default(none) \
-//    private(targets) shared (totalHitDuck, distribution)
-//    {//OMP Start
+    #pragma omp parallel for num_threads(numProcessor)
     for(int kk = 0; kk < spacing; kk++){
     //for(int kk = 0; kk < 4; kk++){
         for (int ll = 0; ll < spacing; ll++ ){
