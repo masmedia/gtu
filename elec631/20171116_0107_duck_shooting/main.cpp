@@ -7,12 +7,12 @@
 //#include "Poisson.hpp"
 
 //using namespace Poisson_NS;
-using namespace Linear_Spacing_NS;
-using namespace Matrix_NS;
 
 int main(){
+    using namespace Linear_Spacing_NS;
+    using namespace Matrix_NS;
 
-    const int noTests = 100;
+    const int noTests = 10000;
     const int noHunters = 10;
     const int spacing = 31;
 
@@ -22,7 +22,10 @@ int main(){
     Linear_Spacing p(0.05, 0.95, spacing);  //p.printVector();
     Matrix res(spacing, spacing, 0);
 
-    #pragma omp parallel for num_threads(4)
+    int numProcessor = omp_get_num_procs();
+    #pragma omp parallel for num_threads(numProcessor) //default(none) \
+//    private(targets) shared (totalHitDuck, distribution)
+//    {//OMP Start
     for(int kk = 0; kk < spacing; kk++){
     //for(int kk = 0; kk < 4; kk++){
         for (int ll = 0; ll < spacing; ll++ ){
@@ -42,7 +45,7 @@ int main(){
                 else{
                     std::map<int, int> targets;
                     std::uniform_int_distribution<int> distribution(1, tmp.R_());
-                    //std::uniform_int_distribution<int> distribution(0, tmp.R_());   //??????
+
                     for(int vv = 0; vv<noHunters; vv++){
                         int temp_vv = distribution(mt);
                         std::map<int, int>::iterator it = targets.find(temp_vv);
@@ -103,6 +106,7 @@ int main(){
             //std::cout << "Res("<<kk<<","<<ll<<")= "<<res.M_().at(kk).at(ll) << "\n";
         }// ll
     }// kk
+//    }//OMP
     res.printMatrix();
 
     return 0;
