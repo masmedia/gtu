@@ -38,7 +38,7 @@ void Monte_Carlo_Simulation_NS::Monte_Carlo_Simulation::simulate(){
     //for(int kk = 0; kk < 4; kk++){
         for (int ll = 0; ll < Spacing_(); ll++ ){
         //for (int ll = 0; ll < 3; ll++ ){
-            std::vector<double> tests(NoTests_(), 0);  //Initialize column vector of size (1,100) with zeros
+            std::vector<double> tests(NoTests_(), 0);  //Initialize column vector of size (1,NoTests_()=10000) with zeros
             double totalHitDuck = 0;
 
             for (int mm = 0; mm< NoTests_(); mm++){
@@ -116,6 +116,5 @@ void Monte_Carlo_Simulation_NS::Monte_Carlo_Simulation::simulate(){
     }// kk
 //    }//OMP
     res.printMatrix();
-
 
 }
