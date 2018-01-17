@@ -1,8 +1,7 @@
 #include "Linear_Spacing.hpp"
  //Constructor
-Linear_Spacing_NS::Linear_Spacing::Linear_Spacing(const double high,
-                                                  const double low,
-                                                  const int space) : hVal_(high),
+Linear_Spacing_NS::Linear_Spacing::Linear_Spacing(const double high, const double low,const int space) :
+                                                                     hVal_(high),
                                                                      lVal_(low),
                                                                      spacing_(space),
                                                                      lin_spacing_(){

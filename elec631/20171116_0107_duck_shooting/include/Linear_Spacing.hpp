@@ -1,5 +1,5 @@
-#ifndef LINEAR_SPACING_H_20173110_1822
-#define LINEAR_SPACING_H_20173110_1822
+#ifndef LINEAR_SPACING_H_20171031_1822
+#define LINEAR_SPACING_H_20171031_1822
 #include <iostream>
 #include <vector>
 namespace Linear_Spacing_NS{
@@ -40,4 +40,4 @@ namespace Linear_Spacing_NS{
             void printVector();
     };  //End of Linear_Spacing class
 }       //End of Linear_Spacing_NS namespace
-#endif // LINEAR_SPACING_H_20173110_1822
+#endif // LINEAR_SPACING_H_20171031_1822
