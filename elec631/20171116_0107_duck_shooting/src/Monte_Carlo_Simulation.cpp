@@ -28,9 +28,9 @@ void Monte_Carlo_Simulation_NS::Monte_Carlo_Simulation::simulate(){
 
     std::mt19937 mt( time(0) );
 
-    Linear_Spacing lam(3, 8, Spacing_());      //lam.pruint64_tVector();
-    Linear_Spacing p(0.05, 0.95, Spacing_());  //p.pruint64_tVector();
-    Matrix res(Spacing_(), Spacing_(), 0);     //res.pruint64_tMatrix();
+    Linear_Spacing lam(3, 8, Spacing_());      //lam.printVector();
+    Linear_Spacing p(0.05, 0.95, Spacing_());  //p.printVector();
+    Matrix res(Spacing_(), Spacing_(), 0);     //res.printMatrix();
 
     uint64_t numProcessor = omp_get_num_procs();
     #pragma omp parallel for num_threads(numProcessor)
