@@ -5,15 +5,15 @@
 namespace Matrix_NS{
     class Matrix{
         private:
-            int row_;
-            int column_;
+            uint64_t row_;
+            uint64_t column_;
             double defaultVal_;
             std::vector< std::vector<double> > matrix_;
 
         public:
             /** Default constructor */
-            Matrix(const int, const int);
-            Matrix(const int, const int, const double);
+            Matrix(const uint64_t, const uint64_t);
+            Matrix(const uint64_t, const uint64_t, const double);
             /** Default destructor */
             ~Matrix();
 
@@ -28,16 +28,16 @@ namespace Matrix_NS{
              */
             Matrix& operator=(Matrix& other);
 
-            const int R_() const;
-            const int C_() const;
+            const uint64_t R_() const;
+            const uint64_t C_() const;
             /** Number of elements stored in matrix. Gives row*column size */
-            const int numel() const;
+            const uint64_t numel() const;
             const std::vector< std::vector<double> >& M_() const;
-            Matrix& M_(int, int, double);
+            Matrix& M_(uint64_t, uint64_t, double);
 
             /** Overloading of operator for column major indexing */
-            double operator()(const int);
-            void operator()(const int, const double);
+            double operator()(const uint64_t);
+            void operator()(const uint64_t, const double);
 
             /** Overloading the basic mathematical operators */
             Matrix& operator+(const Matrix& other);        // Works with mat1 + mat2
@@ -47,7 +47,7 @@ namespace Matrix_NS{
 //            Matrix& operator/(const Matrix& other);
 
             /** Helper method for creation of matrix */
-            const void createMatrix(const int, const int, double);
+            const void createMatrix(const uint64_t, const uint64_t, double);
 
             /** Print matrix for debugging*/
             const void printMatrix() const;
