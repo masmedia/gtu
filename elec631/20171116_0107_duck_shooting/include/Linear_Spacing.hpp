@@ -7,12 +7,12 @@ namespace Linear_Spacing_NS{
         private:
             double hVal_;
             double lVal_;
-            int spacing_;
+            uint64_t spacing_;
             std::vector<double> lin_spacing_;
 
         public:
             /** Default constructor */
-            Linear_Spacing(double, double, const int);
+            Linear_Spacing(double, double, const uint64_t);
 
             /** Default destructor */
             ~Linear_Spacing();
@@ -34,7 +34,7 @@ namespace Linear_Spacing_NS{
             const std::vector<double>& LinSpa_() const;
 
             /** Operator overload for () to reach certain element in the vector*/
-            double operator()(const int);
+            double operator()(const uint64_t);
 
             /** Prints vector for ease of debugging */
             void printVector();

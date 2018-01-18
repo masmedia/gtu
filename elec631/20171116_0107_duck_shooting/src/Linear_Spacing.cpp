@@ -1,6 +1,6 @@
 #include "Linear_Spacing.hpp"
  //Constructor
-Linear_Spacing_NS::Linear_Spacing::Linear_Spacing(const double high, const double low,const int space) :
+Linear_Spacing_NS::Linear_Spacing::Linear_Spacing(const double high, const double low,const uint64_t space) :
                                                                      hVal_(high),
                                                                      lVal_(low),
                                                                      spacing_(space),
@@ -12,7 +12,7 @@ Linear_Spacing_NS::Linear_Spacing::Linear_Spacing(const double high, const doubl
     const double increment = (hVal_-lVal_)/(spacing_ - 1);
     double temp = lVal_;
 
-    for(int i=0; i<spacing_; i++){
+    for(uint64_t i=0; i<spacing_; i++){
         lin_spacing_.emplace_back(temp);
         temp += increment;
     }
@@ -47,7 +47,7 @@ const double Linear_Spacing_NS::Linear_Spacing::LVal_()const{  return lVal_;   }
 const std::vector<double>& Linear_Spacing_NS::Linear_Spacing::LinSpa_()const{  return lin_spacing_;  }
 
 //Operator overloading for reaching certain indexed element
-double Linear_Spacing_NS::Linear_Spacing::operator()(const int i){
+double Linear_Spacing_NS::Linear_Spacing::operator()(const uint64_t i){
     return this->lin_spacing_[i];
 }
 //Prints vector
