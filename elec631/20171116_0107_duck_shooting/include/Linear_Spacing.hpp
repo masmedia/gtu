@@ -34,7 +34,7 @@ namespace Linear_Spacing_NS{
             const std::vector<double>& LinSpa_() const;
 
             /** Operator overload for () to reach certain element in the vector*/
-            double operator()(const uint64_t);
+            double operator()(const int);
 
             /** Prints vector for ease of debugging */
             void printVector();
